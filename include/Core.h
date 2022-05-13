@@ -1,5 +1,5 @@
 #pragma once
-#include "EclipseEngine/include/EngineMacros.h"
+#include <EclipseEngine/include/EngineMacros.h>
 
 namespace Eclipse
 {
