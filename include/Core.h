@@ -3,26 +3,26 @@
 
 namespace Eclipse
 {
-	namespace Debug
-	{
-		// Sends a formated log message to the console.
-		ECAPI auto Log(const char* str) -> void;
-		// Sends a formated debug log message to the console.
-		ECAPI auto Debug(const char* str) -> void;
-		// Sends a formated error log message to the console.
-		ECAPI auto Error(const char* str) -> void;
+    namespace Debug
+    {
+        // Sends a formated log message to the console.
+        ECAPI auto Log(const std::string& str, const std::string& function = "", unsigned line = -1) -> void;
+        // Sends a formated debug log message to the console.
+        ECAPI auto Debug(const std::string& str, const std::string& function = "", unsigned line = -1) -> void;
+        // Sends a formated error log message to the console.
+        ECAPI auto Error(const std::string& str, const std::string& function = "", unsigned line = -1) -> void;
 
-		/*
-		 *
-		 *	Chosen convention
-		 *	"FUNCTION NAME has not been implemented."
-		 *
-		 */
-		ECAPI auto NotImplemented(const char* functionName) -> void;
+        /*
+         *
+         *	Chosen convention
+         *	"FUNCTION NAME has not been implemented."
+         *
+         */
+        ECAPI auto NotImplemented(const char* functionName, const std::string& function = "", unsigned line = -1) -> void;
 
 #pragma region MACROS
 
-// Static Assert to ensure a function that is not implemented is not called.
+        // Static Assert to ensure a function that is not implemented is not called.
 #define NOT_IMPLEMENTED(x) Core::Debug::NotImplemented(#x);
 
 // Static Error Wrapper
@@ -37,5 +37,5 @@ namespace Eclipse
 #define NULL_REF() E_ERROR(Instance is nullptr.)
 #define MAP_EMPLACE_FAIL(x) E_ERROR(#x Instance is nullptr.)
 #define NO_ACTIVE_CAMERAS() E_ERROR(There are no active cameras in this scene.);
-	}
+    }
 }
